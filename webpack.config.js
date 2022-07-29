@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -26,7 +27,8 @@ module.exports = {
   },
   // import 文で .ts ファイルを解決するため
   resolve: {
-    extensions: [".ts", ".js"]
+    extensions: [".ts", ".js"],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
   plugins: [
     new HtmlWebpackPlugin({
